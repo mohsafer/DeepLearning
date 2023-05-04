@@ -1,4 +1,5 @@
 
+
 # Import necessary libraries
 import numpy as np
 import random
@@ -33,17 +34,20 @@ def add_noise(images, noise_type='gaussian', mean=0, stddev=0.1):
         return noisy_images
 
 
-# Apply noise to the image based on the value of R
+# Apply noise to the image based on the value o
 R = random.random()
 
 if R < 0.25:
    x_train_noisy = add_noise(X_train, noise_type='gaussian', mean=0, stddev=0.1)
+   print(f"[Random Value]:{R:.10f} [gaussian]")
 elif R < 0.5:
-    x_train_noisy = add_noise(X_train, noise_type='salt_and_pepper', mean=0, stddev=0.1)
+   x_train_noisy = add_noise(X_train, noise_type='salt_and_pepper', mean=0, stddev=0.1)
+   print(f"[Random Value]:{R:.10f} [Salt and Pepper]")
 else:
     x_train_noisy = X_train
-    
-    
+    print(f"[Random Value]:{R:.10f} [Normal]")
+
+
 # Add noise to the training set
 #x_train_noisy = add_noise(x_train, noise_type='gaussian', mean=0, stddev=0.1)
 
