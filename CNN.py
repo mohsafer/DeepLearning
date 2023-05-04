@@ -9,10 +9,8 @@ from keras.models import Sequential
 from keras.layers import BatchNormalization, Dense, Dropout, Flatten, Conv2D, MaxPooling2D
 from keras.utils import np_utils
 
-
 # Load the MNIST dataset
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
-
 
 # Normalize the pixel values to be between 0 and 1
 #x_train = x_train / 255.0
@@ -33,8 +31,7 @@ def add_noise(images, noise_type='gaussian', mean=0, stddev=0.1):
         raise ValueError('Invalid noise type')
         return noisy_images
 
-
-# Apply noise to the image based on the value o
+# Apply noise to the image based on the value R
 R = random.random()
 
 if R < 0.25:
@@ -56,8 +53,6 @@ train_dataset = tf.data.Dataset.from_tensor_slices((x_train_noisy, y_train))
 train_dataset = train_dataset.shuffle(buffer_size=1024).batch(batch_size=32)
 
 
-
-
 # Preprocess the data
 X_train = X_train.reshape(X_train.shape[0], 28, 28, 1)
 X_test = X_test.reshape(X_test.shape[0], 28, 28, 1)
@@ -71,11 +66,14 @@ y_test = np_utils.to_categorical(y_test, 10)
 # Create the neural network model
 model = Sequential()
 model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(28, 28, 1)))
+model.add(BatchNormalization())
 model.add(Conv2D(64, (3, 3), activation='relu'))
+model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.25))
 model.add(Flatten())
 model.add(Dense(128, activation='relu'))
+model.add(BatchNormalization())
 model.add(Dropout(0.5))
 model.add(Dense(10, activation='softmax'))
 
