@@ -63,7 +63,7 @@ train_dataset = train_dataset.shuffle(buffer_size=1024).batch(batch_size=512)
 
 
 # Preprocess the data
-x_train_noisy = X_train.reshape(X_train.shape[0], 28, 28, 1)
+x_train_noisy = x_train_noisy.reshape(x_train_noisy.shape[0], 28, 28, 1)
 X_test = X_test.reshape(X_test.shape[0], 28, 28, 1)
 x_train_noisy = x_train_noisy.astype('float32')
 X_test = X_test.astype('float32')
