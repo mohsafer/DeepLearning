@@ -1,6 +1,8 @@
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import load_model
+
 
 # Load the MNIST dataset
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -48,3 +50,13 @@ history = model.fit(x_train, y_train,
                     batch_size=128, 
                     epochs=10, 
                     validation_data=(x_test, y_test))
+
+
+model.save('my_model.h5')
+
+
+
+
+# Load the saved model from disk
+model = load_model('my_model.h5')
+
