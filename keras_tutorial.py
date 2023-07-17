@@ -8,6 +8,8 @@ import h5py
 import numpy as np
 import matplotlib.pyplot as plt
 
+#this might be
+#etest
 def load_dataset():
     train_dataset = h5py.File(r"D:\programs\python\soft_math1\deep_learning\datasets/train_catvnoncat.h5")
     train_set_x_org = np.array(train_dataset['train_set_x'][:])
