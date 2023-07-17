@@ -8,7 +8,7 @@ from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers import BatchNormalization, Dense, Dropout, Flatten, Conv2D, MaxPooling2D
 from keras.utils import np_utils
-
+#this is a test from kate
 # Load the MNIST dataset
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
